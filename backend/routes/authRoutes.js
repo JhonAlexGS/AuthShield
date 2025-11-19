@@ -26,7 +26,10 @@ const {
 
 // Public routes
 router.post('/register', validateRegister, register);
-router.post('/login', loginLimiter, validateLogin, login);
+router.post('/login', 
+  loginLimiter, 
+  validateLogin, 
+  login);
 router.post('/refresh', refreshToken);
 router.get('/verify-email/:token', verifyEmail);
 router.post('/resend-verification', emailVerificationLimiter, resendVerification);

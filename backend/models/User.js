@@ -122,7 +122,7 @@ userSchema.methods.getEmailVerificationToken = function() {
     .update(verificationToken)
     .digest('hex');
   
-  this.emailVerificationExpire = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
+  this.emailVerificationExpire = Date.now() + 7 * 24 * 60 * 60 * 1000; // 24 hours
   
   return verificationToken;
 };
