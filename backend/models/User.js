@@ -113,6 +113,7 @@ userSchema.methods.matchPassword = async function(enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
+
 // Generate email verification token
 userSchema.methods.getEmailVerificationToken = function() {
   const verificationToken = crypto.randomBytes(20).toString('hex');
@@ -122,7 +123,7 @@ userSchema.methods.getEmailVerificationToken = function() {
     .update(verificationToken)
     .digest('hex');
   
-  this.emailVerificationExpire = Date.now() + 7 * 24 * 60 * 60 * 1000; // 24 hours
+  this.emailVerificationExpire = Date.now() + 7 * 24 * 60 * 60 * 1000; 
   
   return verificationToken;
 };
@@ -148,6 +149,11 @@ userSchema.methods.isLocked = function() {
 
 // Increment login attempts
 userSchema.methods.incLoginAttempts = async function() {
+
+
+  // Verify lockUntil
+  console.log("Test")
+
   if (this.lockUntil && this.lockUntil < Date.now()) {
     return this.updateOne({
       $set: { loginAttempts: 1 },
