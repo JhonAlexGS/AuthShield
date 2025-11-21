@@ -148,7 +148,8 @@ userSchema.methods.isLocked = function() {
 };
 
 // Increment login attempts
-userSchema.methods.incLoginAttempts = async function() {
+userSchema.methods.incLoginAttempts = async function() 
+{
 
 
   // Verify lockUntil
